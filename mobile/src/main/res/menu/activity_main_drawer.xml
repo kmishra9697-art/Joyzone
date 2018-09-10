@@ -20,8 +20,8 @@
             android:id="@+id/nav_detail_event"
             android:title="@string/event_detail" />
         <item
-            android:id="@+id/nav_other"
-            android:title="..." />
+            android:id="@+id/nav_ranking"
+            android:title="@string/ranking" />
     </group>
 
     <item android:title="@string/config">

@@ -55,7 +55,8 @@
         <activity android:name=".Create_EventActivity" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".RankingActivity"></activity>
     </application>
 
 </manifest>

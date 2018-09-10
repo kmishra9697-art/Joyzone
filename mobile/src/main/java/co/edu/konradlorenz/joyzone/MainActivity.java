@@ -131,8 +131,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_detail_event) {
             Intent go_to_detail_event = new Intent(MainActivity.this, Detail_EventActivity.class);
             startActivity(go_to_detail_event);
-        } else if (id == R.id.nav_other) {
-
+        } else if (id == R.id.nav_ranking) {
+            Intent go_to_ranking = new Intent(MainActivity.this, RankingActivity.class);
+            startActivity(go_to_ranking);
         } else if (id == R.id.nav_settings) {
             Intent go_to_settings = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(go_to_settings);
