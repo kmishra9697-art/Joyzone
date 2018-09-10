@@ -68,9 +68,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_detail_event) {
             Intent go_to_detail_event = new Intent(MainActivity.this, Detail_EventActivity.class);
             startActivity(go_to_detail_event);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_other) {
 
         } else if (id == R.id.nav_settings) {
             Intent go_to_settings = new Intent(MainActivity.this, SettingsActivity.class);
