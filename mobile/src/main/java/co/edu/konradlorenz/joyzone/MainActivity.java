@@ -13,6 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +46,36 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ListView mListView = (ListView) findViewById(R.id.List_Event);
+        ArrayList<Event> eventlist = new ArrayList<>();
+
+        Event a = new Event("Rock Al Parque");
+        eventlist.add(a);
+        Event b = new Event("Jazz Al Parque");
+        eventlist.add(b);
+        Event c = new Event("HipHop Al Parque");
+        eventlist.add(c);
+
+        EventListAdapter adapter = new EventListAdapter(this, R.layout.adapter_event_view_layout, eventlist);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long i){
+                if (position == 0){
+                    Toast.makeText(MainActivity.this, "Item one clicked...", Toast.LENGTH_SHORT).show();
+                }
+                if (position == 1){
+                    Toast.makeText(MainActivity.this, "Item two clicked...", Toast.LENGTH_SHORT).show();
+                }
+                if (position == 2){
+                    Toast.makeText(MainActivity.this, "Item three clicked...", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mListView.setAdapter(adapter);
+
     }
 
     @Override
