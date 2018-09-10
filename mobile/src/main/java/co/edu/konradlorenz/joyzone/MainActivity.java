@@ -90,12 +90,17 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_login) {
             Intent go_to_login = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(go_to_login);
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_create_event) {
+            Intent go_to_create_event = new Intent(MainActivity.this, Create_EventActivity.class);
+            startActivity(go_to_create_event);
+        } else if (id == R.id.nav_detail_event) {
+            Intent go_to_detail_event = new Intent(MainActivity.this, Detail_EventActivity.class);
+            startActivity(go_to_detail_event);
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_settings) {
+            Intent go_to_settings = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(go_to_settings);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
