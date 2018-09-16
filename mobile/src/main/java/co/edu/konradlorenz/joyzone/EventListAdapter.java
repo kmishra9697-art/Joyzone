@@ -25,9 +25,9 @@ public class EventListAdapter extends ArrayAdapter<Event> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        String name = getItem(position).getName();
 
-        Event event = new Event(name);
+        String name = getItem(position).getName();
+        //Event event = new Event(name);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView  = inflater.inflate(mResource,parent,false);
