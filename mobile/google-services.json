@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "559882604850",
+    "firebase_url": "https://joyzone-218221.firebaseio.com",
+    "project_id": "joyzone-218221",
+    "storage_bucket": "joyzone-218221.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559882604850:android:439652460cf7a030",
+        "android_client_info": {
+          "package_name": "co.edu.konradlorenz.joyzone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559882604850-rk713ej8bvt1sokvcul7hosepf1n36ne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.konradlorenz.joyzone",
+            "certificate_hash": "4c686fbf28f41f025e05871f201db4b41ac4a5b4"
+          }
+        },
+        {
+          "client_id": "559882604850-s4tmacp72fqtnsfj9rheueu1tmmilh3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyf2x-D0WkZs1VPaNoDwZRCWE_LaZ60J0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559882604850-s4tmacp72fqtnsfj9rheueu1tmmilh3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
