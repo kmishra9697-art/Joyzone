@@ -6,18 +6,26 @@ import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Pattern;
+
 public class Register extends BaseActivity implements View.OnClickListener{
+
+    AwesomeValidation mAwesomeValidation;
+
 
     private static final String TAG = "EmailPassword";
 
@@ -36,6 +44,8 @@ public class Register extends BaseActivity implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        mAwesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
         // Views
         mStatusTextView = findViewById(R.id.status);
@@ -202,7 +212,15 @@ public class Register extends BaseActivity implements View.OnClickListener{
     }
 
     private void updateUI(FirebaseUser user) {
+        String regexPassword = "(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d])(?=.*[~`!@#\\$%\\^&\\*\\(\\)\\-_\\+=\\{\\}\\[\\]\\|\\;:\"<>,./\\?]).{8,}";
+
         hideProgressDialog();
+
+        mAwesomeValidation.addValidation(Register.this, R.id.field_email, "[a-zA-Z\\s]+",R.string.error_email);
+        mAwesomeValidation.addValidation(Register.this, R.id.field_email, Patterns.EMAIL_ADDRESS, R.string.error_email);
+
+        mAwesomeValidation.addValidation(Register.this, R.id.field_password,regexPassword,R.string.error_password);
+
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
@@ -226,14 +244,20 @@ public class Register extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.email_create_account_button) {
-            createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.email_sign_in_button) {
 
-            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+        if(mAwesomeValidation.validate()){
+            Toast.makeText(Register.this, "Validation Succesfull?", Toast.LENGTH_LONG);
 
-        } else if (i == R.id.sign_out_button) {
-            signOut();
+            if (i == R.id.email_create_account_button) {
+                Toast.makeText(Register.this, "Account Created", Toast.LENGTH_SHORT);
+                createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+            } else if (i == R.id.email_sign_in_button) {
+
+                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+
+            } else if (i == R.id.sign_out_button) {
+                signOut();
+            }
         }
     }
 }
