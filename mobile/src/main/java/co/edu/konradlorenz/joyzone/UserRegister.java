@@ -30,8 +30,8 @@ public class UserRegister extends AppCompatActivity {
 
         mAwesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
-        mAwesomeValidation.addValidation(UserRegister.this, R.id.Name_user, "[a-ZA-Z]\\s+", R.string.error_name);
-        mAwesomeValidation.addValidation(UserRegister.this, R.id.Last_name_user, "[a-ZA-Z]\\s+", R.string.error_lastname);
+        mAwesomeValidation.addValidation(UserRegister.this, R.id.Name_user, "[a-zA-Z\\s]+", R.string.error_name);
+        mAwesomeValidation.addValidation(UserRegister.this, R.id.Last_name_user, "[a-zA-Z\\s]+", R.string.error_lastname);
         mAwesomeValidation.addValidation(UserRegister.this, R.id.age_User, Range.closed(1,100), R.string.error_age);
 
         final String userData =  getIntent().getExtras().getString("user");
