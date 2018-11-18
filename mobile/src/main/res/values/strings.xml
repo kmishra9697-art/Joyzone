@@ -216,6 +216,10 @@
     <string name="error_email">Invalid e-mail</string>
     <string name="error_password">Invalid Password</string>
 
+    <string name="error_event_name">Invalid Event Name</string>
+    <string name="error_event_date">Invalid Event Date</string>
+    <string name="error_event_capacity">Invalid Event Capacity</string>
+
 
 
 </resources>
