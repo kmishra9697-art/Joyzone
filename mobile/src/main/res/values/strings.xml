@@ -209,6 +209,10 @@
 
     <!-- ERROR MSGS-->
 
+    <string name="error_name">Invalid Name</string>
+    <string name="error_lastname">Invalid Lastname</string>
+    <string name="error_age">Invalid Age</string>
+
     <string name="error_email">Invalid e-mail</string>
     <string name="error_password">Invalid Password</string>
 

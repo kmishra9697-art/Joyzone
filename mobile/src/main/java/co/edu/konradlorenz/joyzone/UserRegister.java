@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.google.common.collect.Range;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -18,22 +21,22 @@ import co.edu.konradlorenz.joyzone.entities.UserEntity;
 
 public class UserRegister extends AppCompatActivity {
 
+    AwesomeValidation mAwesomeValidation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_register);
 
+        mAwesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+
+        mAwesomeValidation.addValidation(UserRegister.this, R.id.Name_user, "[a-ZA-Z]\\s+", R.string.error_name);
+        mAwesomeValidation.addValidation(UserRegister.this, R.id.Last_name_user, "[a-ZA-Z]\\s+", R.string.error_lastname);
+        mAwesomeValidation.addValidation(UserRegister.this, R.id.age_User, Range.closed(1,100), R.string.error_age);
+
         final String userData =  getIntent().getExtras().getString("user");
-
-
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-
         final DatabaseReference myRef = database.getReference(userData);
-
-
-
-
         Button botonadduser = (Button) findViewById(R.id.Create_User);
 
         botonadduser.setOnClickListener(new View.OnClickListener(){
@@ -46,12 +49,9 @@ public class UserRegister extends AppCompatActivity {
                 final EditText about = (EditText) findViewById(R.id.About_User);
                 final ArrayList<EventEntity> eventos = new ArrayList<>();
 
-
                 UserEntity user = new UserEntity(name.getText().toString(),lastname.getText().toString(),edad,about.getText().toString(),eventos);
                 DatabaseReference childRef = myRef.push();
-
                 childRef.setValue(user);
-
                 Intent intento = new Intent(UserRegister.this, MainActivity.class);
                 intento.putExtra("user",userData);
                 startActivity(intento);
