@@ -42,19 +42,22 @@ public class UserRegister extends AppCompatActivity {
         botonadduser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                final EditText name = (EditText) findViewById(R.id.Name_user);
-                final EditText lastname = (EditText) findViewById(R.id.Last_name_user);
-                final EditText age = (EditText) findViewById(R.id.age_User);
-                final int edad = Integer.parseInt(age.getText().toString());
-                final EditText about = (EditText) findViewById(R.id.About_User);
-                final ArrayList<EventEntity> eventos = new ArrayList<>();
 
-                UserEntity user = new UserEntity(name.getText().toString(),lastname.getText().toString(),edad,about.getText().toString(),eventos);
-                DatabaseReference childRef = myRef.push();
-                childRef.setValue(user);
-                Intent intento = new Intent(UserRegister.this, MainActivity.class);
-                intento.putExtra("user",userData);
-                startActivity(intento);
+                if(mAwesomeValidation.validate()){
+                    final EditText name = (EditText) findViewById(R.id.Name_user);
+                    final EditText lastname = (EditText) findViewById(R.id.Last_name_user);
+                    final EditText age = (EditText) findViewById(R.id.age_User);
+                    final int edad = Integer.parseInt(age.getText().toString());
+                    final EditText about = (EditText) findViewById(R.id.About_User);
+                    final ArrayList<EventEntity> eventos = new ArrayList<>();
+
+                    UserEntity user = new UserEntity(name.getText().toString(),lastname.getText().toString(),edad,about.getText().toString(),eventos);
+                    DatabaseReference childRef = myRef.push();
+                    childRef.setValue(user);
+                    Intent intento = new Intent(UserRegister.this, MainActivity.class);
+                    intento.putExtra("user",userData);
+                    startActivity(intento);
+                }
             }
         });
     }
