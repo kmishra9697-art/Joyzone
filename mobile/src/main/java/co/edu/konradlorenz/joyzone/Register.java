@@ -212,14 +212,7 @@ public class Register extends BaseActivity implements View.OnClickListener{
     }
 
     private void updateUI(FirebaseUser user) {
-        String regexPassword = "(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d])(?=.*[~`!@#\\$%\\^&\\*\\(\\)\\-_\\+=\\{\\}\\[\\]\\|\\;:\"<>,./\\?]).{8,}";
-
         hideProgressDialog();
-
-        mAwesomeValidation.addValidation(Register.this, R.id.field_email, "[a-zA-Z\\s]+",R.string.error_email);
-        mAwesomeValidation.addValidation(Register.this, R.id.field_email, Patterns.EMAIL_ADDRESS, R.string.error_email);
-
-        mAwesomeValidation.addValidation(Register.this, R.id.field_password,regexPassword,R.string.error_password);
 
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
@@ -244,6 +237,11 @@ public class Register extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int i = v.getId();
+
+        String regexPassword = "(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d])(?=.*[~`!@#\\$%\\^&\\*\\(\\)\\-_\\+=\\{\\}\\[\\]\\|\\;:\"<>,./\\?]).{8,}";
+        //mAwesomeValidation.addValidation(Register.this, R.id.field_email, "[a-zA-Z\\s]+",R.string.error_email);
+        mAwesomeValidation.addValidation(Register.this, R.id.field_email, Patterns.EMAIL_ADDRESS, R.string.error_email);
+        //mAwesomeValidation.addValidation(Register.this, R.id.field_password,regexPassword,R.string.error_password);
 
         if(mAwesomeValidation.validate()){
             Toast.makeText(Register.this, "Validation Succesfull?", Toast.LENGTH_LONG);
