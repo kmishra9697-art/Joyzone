@@ -244,18 +244,18 @@ public class Register extends BaseActivity implements View.OnClickListener{
         //mAwesomeValidation.addValidation(Register.this, R.id.field_password,regexPassword,R.string.error_password);
 
         if(mAwesomeValidation.validate()){
-            Toast.makeText(Register.this, "Validation Succesfull?", Toast.LENGTH_LONG);
 
             if (i == R.id.email_create_account_button) {
-                Toast.makeText(Register.this, "Account Created", Toast.LENGTH_SHORT);
                 createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
             } else if (i == R.id.email_sign_in_button) {
 
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
 
-            } else if (i == R.id.sign_out_button) {
-                signOut();
             }
+        }
+
+        if (i == R.id.sign_out_button) {
+            signOut();
         }
     }
 }
