@@ -51,6 +51,7 @@
             android:padding="@dimen/general_padding"
             android:text="Fecha" />
 
+
         <EditText
             android:id="@+id/Capacidad"
             android:layout_width="match_parent"
