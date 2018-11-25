@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(go_to_map);
         } else if (id == R.id.nav_profile) {
             Intent go_to_profile = new Intent(MainActivity.this, ProfileActivity.class);
+            go_to_profile.putExtra("user",userBase);
             startActivity(go_to_profile);
         } else if (id == R.id.nav_create_event) {
             Intent go_to_create_event = new Intent(MainActivity.this, Create_EventActivity.class);

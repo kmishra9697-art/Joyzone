@@ -30,13 +30,13 @@ public class UserRegister extends AppCompatActivity {
 
         mAwesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
-        mAwesomeValidation.addValidation(UserRegister.this, R.id.Name_user, "[a-zA-Z\\s]+", R.string.error_name);
-        mAwesomeValidation.addValidation(UserRegister.this, R.id.Last_name_user, "[a-zA-Z\\s]+", R.string.error_lastname);
+        mAwesomeValidation.addValidation(UserRegister.this, R.id.Name_user, "[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.-]+" , R.string.error_name);
+        mAwesomeValidation.addValidation(UserRegister.this, R.id.Last_name_user, "[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.-]+", R.string.error_lastname);
         mAwesomeValidation.addValidation(UserRegister.this, R.id.age_User, Range.closed(1,100), R.string.error_age);
 
         final String userData =  getIntent().getExtras().getString("user");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference(userData);
+        final DatabaseReference myRef = database.getReference("Users").child(userData);
         Button botonadduser = (Button) findViewById(R.id.Create_User);
 
         botonadduser.setOnClickListener(new View.OnClickListener(){
